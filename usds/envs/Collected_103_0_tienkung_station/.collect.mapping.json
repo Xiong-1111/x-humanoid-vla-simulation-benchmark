@@ -1,0 +1,29 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/fruit/fruit_47_T1/textures/apple10_lr_baseColor.jpg",
+            "source_hash": "f2077dac0429e8194cd937cf8b1fbd41726d8ed9",
+            "target_url": "./Object_assets/Object_assets_v1/fruit/fruit_47_T1/textures/apple10_lr_baseColor.jpg",
+            "target_hash": "9e23690bd79575df241a612d76bbda891af40d56"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/fruit/fruit_47_T1/textures/apple10_lr_normal_norm.jpg",
+            "source_hash": "230c55928b11e68b1a63bd78dc0a2be1832c7184",
+            "target_url": "./Object_assets/Object_assets_v1/fruit/fruit_47_T1/textures/apple10_lr_normal_norm.jpg",
+            "target_hash": "a169f7807be45333d674c81c7e0485b898ff32dc"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/From_Jianyuan/container/storage_basket_001_T1/resource/img/8e439468507af0263b4b0db858c882c2.png",
+            "source_hash": "8caefb70aff1303635d4ac7c764878869fed8c02",
+            "target_url": "./Object_assets/Object_assets_v1/From_Jianyuan/container/storage_basket_001_T1/resource/img/8e439468507af0263b4b0db858c882c2.png",
+            "target_hash": "3075e9cad4e10048616bdb60d67ba0cf085b021b"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/From_Jianyuan/container/storage_basket_001_T1/resource/img/98cc5c487a5dc5b92203f28a3f2094a6.png",
+            "source_hash": "467ff3744bf8ddd76e000cf82d67d4869726f996",
+            "target_url": "./Object_assets/Object_assets_v1/From_Jianyuan/container/storage_basket_001_T1/resource/img/98cc5c487a5dc5b92203f28a3f2094a6.png",
+            "target_hash": "871a5b2f73066c43f826f1265613d2337f4f1f4f"
+        }
+    ]
+}

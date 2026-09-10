@@ -5,6 +5,8 @@ from .TianYi2_Brainco2_lab_task_03 import *
 from .TianYi2_Brainco2_ind_task_01 import *
 from .TianYi2_Brainco2_ind_task_02 import *
 from .TianYi2_Brainco2_ind_task_03 import *
+from .TianYi2_Brainco2_ind_task_04 import *
+
 
 __all__ = [
     'TianYi2_Brainco2_lab_task_01',
@@ -12,4 +14,5 @@ __all__ = [
     'TianYi2_Brainco2_ind_task_01',
     'TianYi2_Brainco2_ind_task_02',
     'TianYi2_Brainco2_ind_task_03',
+    'TianYi2_Brainco2_ind_task_04',
 ]

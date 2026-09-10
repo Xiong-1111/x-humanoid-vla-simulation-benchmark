@@ -23,8 +23,10 @@ TaskNameMapping = {
     "ind_task_01":"TianYi2_Brainco2_ind_task_01",
     "ind_task_02":"TianYi2_Brainco2_ind_task_02",
     "ind_task_03":"TianYi2_Brainco2_ind_task_03",
+    "ind_task_04":"TianYi2_Brainco2_ind_task_04",
     "lab_task_01":"TianYi2_Brainco2_lab_task_01",
     "lab_task_03":"TianYi2_Brainco2_lab_task_03",
+
 }
 
 class BenchmarkRunner:

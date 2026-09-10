@@ -16,6 +16,9 @@ from common.utils.p2p_traj import P2P_Trajectory
 from common.utils.zmq_utils import ZmqPublisher, ZmqReceiver, eval_endpoints_from_env
 from common.utils.video_recorder import EpisodeVideoRecorder
 from tasks.task_base import TaskRunnerBase
+
+from common.utils.task_check import Task_Check # 导入判定工具，里面有check_relative_position方法,用两个物体的AABB判断A在不在B里面
+
 # others
 import numpy as np
 import time
@@ -55,6 +58,11 @@ class TianYi2_Brainco2_Task_Base(TaskRunnerBase):
 
         # Basic runtime states
         self.start_flag = False
+
+        # 创建判定器和任务成功标志
+        self.task_success_flag = False
+        self.task_checker = Task_Check() # 创建任务检查器
+
         self.episode_id = episode_id
         self.task_name = task_name
         self.condition = condition
@@ -88,11 +96,12 @@ class TianYi2_Brainco2_Task_Base(TaskRunnerBase):
         # Activate joints
         self.robot.active_art()
         logger.info("art activated")
-        # Add callbacks
+        # 注册每帧判定回调函数
         self.physics_callback_dict = {
             'execute_joint': self.robot.joint_callback,
             'pub_joint': self.collect_data_callback,
             'update_joint': self.update_joint_callback,
+            'check_success': self.check_success_callback, # 添加任务成功检查回调
         }
         for physics_callback_name, physics_callback_fn in self.physics_callback_dict.items():
             self.simulation_context.add_physics_callback(physics_callback_name, callback_fn=physics_callback_fn)
@@ -102,6 +111,9 @@ class TianYi2_Brainco2_Task_Base(TaskRunnerBase):
             self.one_step()
         self.to_home_pose()
         logger.success("init play done")
+
+    def check_success_callback(self, step_size) -> None:
+        pass
 
     def update_joint_callback(self, step_size) -> None:
         if self.start_flag == True:
