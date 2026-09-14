@@ -1,0 +1,18 @@
+[environment]
+usd_path = "./usds/envs/Collected_103_0_tienkung_station"
+usd_path_spatial = "./usds/envs/Collected_103_0_tienkung_station"
+
+[robot]
+init_position = [-0.83, 0.0, 0.0]
+l_arm_home_pose = [-0.069, 0.033, 0.189, -1.556, 0.045, -0.081, -0.014]
+r_arm_home_pose = [-0.069, -0.033, -0.189, -1.556, -0.045, -0.081, 0.014]
+l_arm_init_pose = [-0.0755696, 1.57, 0.4, -1.0, -0.12806451, -0.61225766, -0.6118263]
+r_arm_init_pose = [0.0755696, -1.57, -0.4, -1.0, -0.12806451, -0.61225766, 0.6118263]
+
+[isaac_config]
+headless = false
+
+[task]
+description = "Left arm puts the apple into the basket"
+container_prim = "/generated_scene/grabable_items/Storage_basket_2"
+Object_prim = "/generated_scene/grabable_items/Apple_1"
