@@ -12,7 +12,7 @@ r_arm_init_pose = [0.0755696, -1.57, -0.4, -1.0, -0.12806451, -0.61225766, 0.611
 [isaac_config]
 headless = false
 
-[task]
+[task] 
 description = "Left arm puts the apple into the basket"
 container_prim = "/generated_scene/grabable_items/Storage_basket_2"
 Object_prim = "/generated_scene/grabable_items/Apple_1"
