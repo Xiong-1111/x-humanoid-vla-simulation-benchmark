@@ -71,14 +71,14 @@ class TianYi2_Brainco2_ind_task_04(TianYi2_Brainco2_Task_Base):
         while is_stage_loading():
             simulation_app.update()
         self.container_prim = config_loader.task_config["task"]["container_prim"] #篮子路径
-        self.object_prim = config_loader.task_config["task"]["Object_prim"] # 苹果路径
+        self.Object_prim = config_loader.task_config["task"]["Object_prim"] # 苹果路径
         self.init_states()
         logger.success('TianYi2_Brainco2 runner initialized')
 
         #重写判定函数
     def check_success_callback(self, step_size) -> None:
         if self.task_checker.check_relative_position(
-            a_path=self.object_prim,
+            a_path=self.Object_prim,
             b_path=self.container_prim,
             relation="inside",
             inside_tolerance=np.array( 
