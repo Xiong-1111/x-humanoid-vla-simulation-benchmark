@@ -64,6 +64,8 @@ def main():
         # Import task modules (must be after SimulationApp startup)
         import robots
         import tasks.TianYi2_Brainco2_tasks
+        import tasks.TienKung3_Brainco2_tasks
+        from robots.TienKung3_Brainco2 import TienKung3_Brainco2
 
         config_loader.load_task_toml(args.task)
         task_config = config_loader.task_config

@@ -1,0 +1,41 @@
+{
+    "version": "1.0",
+    "file_records": [
+        {
+            "source_url": "/home/ps/Pictures/works/9-conveyor/usd/textures/color_121212.hdr",
+            "source_hash": "b2b8e2186f9b274890edac444ab7ebe2a3cea59f",
+            "target_url": "./home/ps/Pictures/works/9-conveyor/usd/textures/color_121212.hdr",
+            "target_hash": "126171907b6fd777a9072a1af860bc9a4407425f"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/conveyor/conveyor_001_T1/conveyor_control.py",
+            "source_hash": "9456dae14d8d327f12be018560890bbca2e6cca2",
+            "target_url": "./Object_assets/Object_assets_v1/conveyor/conveyor_001_T1/conveyor_control.py",
+            "target_hash": "0ac291420bd42ba2041f8496d3f100474b02516f"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/conveyor/conveyor_001_T1/textures/belt.jpg",
+            "source_hash": "3bbc3ce0233510fb2069cc361a4bf2f81fa5e151",
+            "target_url": "./Object_assets/Object_assets_v1/conveyor/conveyor_001_T1/textures/belt.jpg",
+            "target_hash": "67550fa35e662cf21e6d61f2e4b0bd8045cf03a2"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/From_Jianyuan/switch/redbutton_002_T1/resource/img/3fef927ac0d7a1ef1241157bfaf4161b.png",
+            "source_hash": "0b72114c7749bc1e68ff1d543c9fcadecf31d12a",
+            "target_url": "./Object_assets/Object_assets_v1/From_Jianyuan/switch/redbutton_002_T1/resource/img/3fef927ac0d7a1ef1241157bfaf4161b.png",
+            "target_hash": "9dfdd1cd4e078ca5549f67d4327bf790ed1bcad4"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/From_Jianyuan/switch/redbutton_002_T1/resource/img/ab675359fa4eed044e05aeed9db5c21f.png",
+            "source_hash": "837fd208bd0434b24b6c8fd09c9979947116df70",
+            "target_url": "./Object_assets/Object_assets_v1/From_Jianyuan/switch/redbutton_002_T1/resource/img/ab675359fa4eed044e05aeed9db5c21f.png",
+            "target_hash": "6b65a77d5e1958b871c279c0969b32b2ce0b6462"
+        },
+        {
+            "source_url": "/nfsroot/Embodied_AI/Object_assets/Object_assets_v1/From_Jianyuan/container/red_tray_001_T1/resource/img/ab675359fa4eed044e05aeed9db5c21f.png",
+            "source_hash": "687e65bf8645e52092c86c53aeabb177d57646e7",
+            "target_url": "./Object_assets/Object_assets_v1/From_Jianyuan/container/red_tray_001_T1/resource/img/ab675359fa4eed044e05aeed9db5c21f.png",
+            "target_hash": "84fc84f57f146540d386c0f847e2d3f97f4b6f41"
+        }
+    ]
+}

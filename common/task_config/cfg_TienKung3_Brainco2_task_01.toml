@@ -1,0 +1,20 @@
+[environment]
+usd_path = './usds/envs/Collected_101_0_tienkung3_brainco2'
+
+[robot]
+init_position = [-0.5, 0.0, 0.968]
+l_arm_home_pose = [-0.0755696, 0.76626045, 0.15360643, -1.2854961, -0.12806451, -0.61225766, -0.6118263]
+r_arm_home_pose = [0.0755696, -0.76626045, -0.15360643, -1.2854961, -0.12806451, -0.61225766, 0.6118263]
+l_arm_init_pose = [-0.0755696, 1.57, 0.15360643, -0.0, -0.12806451, -0.61225766, -0.6118263]
+r_arm_init_pose = [0.0755696, -1.57, -0.15360643, -0.0, -0.12806451, -0.61225766, 0.6118263]
+
+[isaac_config]
+headless = false
+
+[task]
+description = "Left arm picks up switch from conveyor and places them into the tray"
+container_prim = "/generated_scene/grabable_items/Red_tray_robomindv2_2"
+Object_prim = "/generated_scene/grabable_items/Redbutton_lying_robomindv2_3" # 整个开关，用于成功判定（无rigid body）
+Object_body_prim = "/generated_scene/grabable_items/Redbutton_lying_robomindv2_3/E_body_16" # 实际开关主体，用于检测和物理复位（有rigid body）
+ConveyorNode_prim = "/generated_scene/grabable_items/Conveyor_120x25x7_1/ConveyorBeltGraph/ConveyorNode"
+Conveyor_vel = 0.1

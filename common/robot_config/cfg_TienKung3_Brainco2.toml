@@ -1,0 +1,61 @@
+[robot.config]
+usd_path = './usds/tiangong3_0/tiangong3_dex_brainco2.usd'
+namespace = '/TienKung'
+init_position = [0.0, 0.0, 0.0]
+init_orientation = [0.0, 0.0, 0.0]
+l_arm_home_pose = [0.259524, 0.11028481, 0.2403924, -1.735622, -1.4694061, -0.33732894, 0.01364803]
+r_arm_home_pose = [0.33150613, -0.27020207, 0.14799793, -1.7323436, 1.2002013, 0.3551929, -0.2500993]
+art_prim = "/humanoid/pelvis"
+arm_type = "dual"
+
+[robot.joint]
+num_arm_dof = 7
+num_leg_dof = 7
+l_arm_joint_name = [
+    "shoulder_pitch_l_joint",
+    "shoulder_roll_l_joint",
+    "shoulder_yaw_l_joint",
+    "elbow_pitch_l_joint",
+    "elbow_yaw_l_joint",
+    "wrist_pitch_l_joint",
+    "wrist_roll_l_joint",
+]
+r_arm_joint_name = [
+    "shoulder_pitch_r_joint",
+    "shoulder_roll_r_joint",
+    "shoulder_yaw_r_joint",
+    "elbow_pitch_r_joint",
+    "elbow_yaw_r_joint",
+    "wrist_pitch_r_joint",
+    "wrist_roll_r_joint",
+]
+ee_name = "robotiq_85"
+l_ee_joint_name = [
+    "left_thumb_metacarpal_joint",
+    "left_thumb_proximal_joint",
+    "left_index_proximal_joint",
+    "left_middle_proximal_joint",
+    "left_ring_proximal_joint",
+    "left_pinky_proximal_joint",
+]
+r_ee_joint_name = [
+    "right_thumb_metacarpal_joint",
+    "right_thumb_proximal_joint",
+    "right_index_proximal_joint",
+    "right_middle_proximal_joint",
+    "right_ring_proximal_joint",
+    "right_pinky_proximal_joint",
+]
+
+[cam.camera_head]
+base_link = "/humanoid/camera_head_link/cam_head"
+frequency = 30
+position = [0.0, 0.0, 0.0]
+orientation = [0.0, 1.0, 0.0, 0.0]
+focal_length = 1.93
+camera_matrix = [[458.7488, 0.0, 323.3297],
+                 [0.0, 458.8663, 240.6295],
+                 [0.0, 0.0, 1.0]]
+cam_resolution = [1280,720]
+cam_type="Orbbec_Gemini336"
+
