@@ -34,6 +34,7 @@ class TienKung3_Brainco2_task_01(TienKung3_Brainco2_Task_Base):
         environment_path=None,
         robot_init_position=None,
         robot_init_orientation=None,
+        #修复构造参数不同
         episode_id=0,
         task_name="",
         condition="standard",
