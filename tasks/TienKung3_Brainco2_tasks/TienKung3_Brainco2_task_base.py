@@ -44,6 +44,7 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
                  render_dt: float = 1.0 / 120,
                  stage_units_in_meters: float = 1.00,
                  environment_path: str = None,
+                 #构造参数适配目标仓库
                  episode_id: int = 0,
                  enable_gpu: bool = False,
                  task_name: str = "",
@@ -53,6 +54,7 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
 
 
         logger.debug("TienKung3_Brainco2_Task_Base init")
+        #调用TaskRunnerBase时加入目标仓库支持的参数
         super().__init__(simulation_app=simulation_app,
                          physics_dt=physics_dt,
                          render_dt=render_dt,
@@ -73,6 +75,7 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
         self._episode_start_time = time.time()
         self.current_step = 0
 
+        #修复ZMQ地址不同问题
         obs_port, action_port, infer_host = eval_endpoints_from_env()
 
         self.zmq_publisher = ZmqPublisher(port=obs_port)
@@ -80,6 +83,7 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
             port=action_port,
             host=infer_host,
         )
+        #初始化录像  
         video_path = os.path.join(
             "logs",
             "task_videos",
@@ -132,7 +136,7 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
     def update_joint_callback(self, step_size) -> None:
         if not self.start_flag:
             return
-
+        #修复动作消息格式问题，使用envelope ZMQ
         envelope = self.zmq_receiver.receive_envelope(timeout=10)
 
         if envelope is None:
@@ -147,31 +151,31 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
         if topic == b"action" and data is not None:
             self.robot.update_command(data)
         
-
+    #采集并发送观测，仿真每走一个物理步就会调用一次
     def collect_data_callback(self, step_size) -> None:
         self.sim_step += 1
 
-        if self.sim_step % 4 != 0:
+        if self.sim_step % 4 != 0:  #每四步采集一次
             return
-
+        #获取仿真时间
         curr_time = int(
             omni.timeline.get_timeline_interface().get_current_time() * 1000
         )
-
+        #采集天工3关节状态
         self.buffer_pool_align["puppet"] = (
             self.robot.pub_l_r_joints(curr_time)
         )
-        self.buffer_pool_align["camera_observations"]["timestamp"] = curr_time
-
+        self.buffer_pool_align["camera_observations"]["timestamp"] = curr_time #让policy知道这一批图像属于哪个仿真时刻，并且可以和关节状态对齐。
+        #修复观测格式不同的问题
         for cam_name in self.robot.cam_dict:
             camera = self.robot.cam_dict[cam_name]
-
+            #RGB：物体颜色和纹理
             camera.get_rgb(
                 out_buffer=self.buffer_pool_align[
                     "camera_observations"
                 ]["color_images"][cam_name]
             )
-
+            #Depth：物体距离和三维结构
             camera.get_depth(
                 out_buffer=self.buffer_pool_align[
                     "camera_observations"
@@ -185,11 +189,11 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
                 episode_id=self.episode_id,
                 step_id=self.current_step,
             )
-
+            #将同一批观测写入录像
             if self.record_video:
                 self.video_recorder.add_frame(self.buffer_pool_align)
 
-
+    
     def check_success_callback(self, step_size) -> None:
         """Default implementation does nothing. Subclasses should override."""
         pass
@@ -250,10 +254,10 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
         self.stop()
 
 
-
+    #为通信、相机、录像做准备
     def start(self):
         logger.success("Attempt to start sim")
-
+        #发送测试消息   
         for _ in range(10):
             self.zmq_publisher.send_msg(
                 data=None,
@@ -262,17 +266,17 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
                 step_id=self.current_step,
             )
             time.sleep(0.1)
-
+            #尝试接收policy端测试回复
             recv_msg = self.zmq_receiver.receive_msg(timeout=10)
             if recv_msg is not None and recv_msg[0] == b"test":
                 logger.info("Sim recv func warmed up")
-
+        #初始化所有相机的深度功能
         for cam_name in self.robot.cam_dict:
             self.robot.cam_dict[cam_name].init_depth()
 
         omni.timeline.get_timeline_interface().set_current_time(0)
         self.sim_step = 0
-
+        #发送正式开始消息
         self.zmq_publisher.send_msg(
             data=b"TienKung3",
             topic=b"start",
@@ -283,7 +287,7 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
         if self.record_video:
             self.video_recorder.start_recording()
 
-
+    #超时前释放录像
     def _release_video_on_signal(self, signum, frame):
         logger.info("Received SIGUSR1, releasing video writer")
         self.video_recorder.stop_recording()
@@ -291,7 +295,6 @@ class TienKung3_Brainco2_Task_Base(TaskRunnerBase):
 
     def stop(self):
         self.video_recorder.stop_recording()
-
         self.zmq_publisher.send_msg(
             data=None,
             topic=b"reset",
